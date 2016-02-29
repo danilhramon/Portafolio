@@ -1,0 +1,9 @@
+desordenar<-function(vector){
+  longitud<-length(vector)
+  loco<-c()
+  acomodo<-matrix(runif(longitud*2),2,longitud)
+  acomodo[2,]<-vector
+  acomodo<-acomodo[,order(acomodo[1,])]
+  regresa<-acomodo[2,]
+  return(regresa)
+}
