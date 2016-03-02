@@ -1,0 +1,10 @@
+ProbabilidadPerdidaOptimizada<-function(portafolio,TiempoFinal){
+  rendimientosln<-matrix(0,length(portafolio[,1]),length(portafolio[1,]))
+  rendimientosln<-na.omit(diff(log(portafolio)))
+  r<-efficientPortfolio(timeSeries(rendimientosln))
+  r<-r@spec@portfolio$weights
+  r<-as.vector(r)
+  pp<-ProbabilidadPerdida(TiempoFinal,r,portafolio)
+  pp<-list("Probab"=pp,"por"=r)
+  return(pp)
+}
